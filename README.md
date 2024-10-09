@@ -1,13 +1,7 @@
-Secure Shell (SSH)
 1.1 Exercice : Connexion SSH root (reprise fin TP-01)
 Objectif : Configurer SSH pour permettre les connexions root distantes avec mot de passe.
 
 Étapes à suivre :
-
-apt search ssh
-Installez openssh-server :
-
-apt update
 
 apt install openssh-server
 Modification de la configuration SSH :
@@ -19,17 +13,10 @@ Recherchez et modifiez les lignes suivantes :
 
 PermitRootLogin yes
 
-PasswordAuthentication yes
-
 systemctl restart ssh
-Explications des éléments de configuration modifiés :
 
-PermitRootLogin yes :
+ssh root@ip_serveur -p 2222
 
-Description : Autorise l’authentification par mot de passe.
-Avantages : Facilité d’utilisation sans nécessiter de gestion de clés SSH.
-Inconvénients : Moins sécurisé que l’authentification par clé, vulnérable aux attaques par force brute.
-Utilisation : Utile dans des environnements de test ou lorsque la gestion des clés est complexe. En production, il est recommandé de désactiver cette option et d’utiliser l’authentification par clé.
 1.2 Exercice : Authentification par clé / Génération de clés
 Objectif : Générer une paire de clés SSH pour une authentification sécurisée sans mot de passe.
 
