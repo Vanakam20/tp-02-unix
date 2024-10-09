@@ -26,12 +26,6 @@ Explications des éléments de configuration modifiés :
 
 PermitRootLogin yes :
 
-Description : Permet les connexions SSH en tant qu’utilisateur root.
-Avantages : Accès direct et complet au système pour l’administration.
-Inconvénients : Augmente le risque de sécurité car le compte root est une cible privilégiée.
-Utilisation : À utiliser avec précaution, généralement désactivé en production pour des raisons de sécurité.
-PasswordAuthentication yes :
-
 Description : Autorise l’authentification par mot de passe.
 Avantages : Facilité d’utilisation sans nécessiter de gestion de clés SSH.
 Inconvénients : Moins sécurisé que l’authentification par clé, vulnérable aux attaques par force brute.
@@ -48,15 +42,6 @@ Sur votre machine hôte, ouvrez un terminal et exécutez :
 
 
 ssh-keygen -t rsa -b 4096 -C "votre_email@example.com"
-Instructions :
-Lorsque vous êtes invité à "Enter file in which to save the key", appuyez sur ENTER pour accepter le chemin par défaut (~/.ssh/id_rsa).
-Lorsque vous êtes invité à entrer une passphrase, appuyez simplement sur ENTER (ne mettez pas de passphrase pour simplifier).
-Pourquoi ne pas mettre de passphrase est une mauvaise idée en réel :
-
-Sécurité : Sans passphrase, si quelqu’un obtient votre clé privée, il peut accéder à vos serveurs sans restriction.
-Meilleure pratique : Utiliser une passphrase renforce la sécurité en chiffrant la clé privée. En cas de compromission, la clé est inutilisable sans la passphrase.
-Sauvegarde des clés :
-
 La clé privée est sauvegardée par défaut dans ~/.ssh/id_rsa.
 La clé publique est sauvegardée dans ~/.ssh/id_rsa.pub.
 Si vous utilisez votre machine personnelle :
@@ -75,23 +60,9 @@ Remplacez ip_serveur par l’adresse IP de votre serveur.
 Création du dossier .ssh si nécessaire :
 
 
-mkdir -p /root/.ssh
-
-
-
-
-
-
-
-
+mkdir -p /root/.ssh/authorized_keys
 
 chmod 600 root/.ssh/authorized_keys
-
-
-
-priv:
-Pd96Rqd8MaWB0AWzXzrYVuCXWy/OYCi5pIF8NJ0RQok
-
 
 
 
@@ -104,7 +75,6 @@ Collez la clé publique copiée.
 Sauvegardez et fermez l’éditeur.
 Définissez les permissions correctes :
 
-²
 Redémarrage du service SSH (si nécessaire) :
 
 
