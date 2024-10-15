@@ -868,15 +868,141 @@ Que font les commandes suivantes :
 $ ls | cat :
 
 Explication : Liste les fichiers et dossiers dans le répertoire courant (ls) et passe la liste à cat, qui l’affiche sur le terminal. La seul différent a ls est que la liste est mise en colonne .
+Résultat:
+**authorized_keys
+liste
+ok
+ok.pub**
+
 $ ls -l | cat > liste :
 
 Explication : Liste détaillée des fichiers (ls -l), passe cette liste à cat, qui redirige la sortie vers le fichier liste, écrasant son contenu précédent.
-$ ls -l | tee liste :
+Contenu de liste: 
+ <table border="1">
+    <thead>
+        <tr>
+            <th>Permissions</th>
+            <th>Links</th>
+            <th>User</th>
+            <th>Group</th>
+            <th>Size</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-rw-r--r--</td>
+            <td>1</td>
+            <td>root</td>
+            <td>root</td>
+            <td>0</td>
+            <td>Oct 9</td>
+            <td>14:17</td>
+            <td>authorized_keys</td>
+        </tr>
+        <tr>
+            <td>-rw-r--r--</td>
+            <td>1</td>
+            <td>root</td>
+            <td>root</td>
+            <td>0</td>
+            <td>Oct 15</td>
+            <td>17:58</td>
+            <td>liste</td>
+        </tr>
+        <tr>
+            <td>-rw-------</td>
+            <td>1</td>
+            <td>root</td>
+            <td>root</td>
+            <td>2590</td>
+            <td>Oct 2</td>
+            <td>12:33</td>
+            <td>ok</td>
+        </tr>
+        <tr>
+            <td>-rw-r--r--</td>
+            <td>1</td>
+            <td>root</td>
+            <td>root</td>
+            <td>563</td>
+            <td>Oct 2</td>
+            <td>12:33</td>
+            <td>ok.pub</td>
+        </tr>
+    </tbody>
+</table>
 
-Explication : Liste détaillée des fichiers (ls -l), passe cette liste à tee, qui l’écrit dans le fichier liste tout en l’affichant sur le terminal.
+
+
+$ ls -l | tee liste :
+Explication : Liste détaillée(permission sur le ficher, qui la crée le ficher, la taille, date de création) des fichiers (ls -l), passe cette liste à tee, qui l’écrit dans le fichier liste tout en l’affichant sur le terminal.
+Résultat: <table border="1">
+    <thead>
+        <tr>
+            <th>Permissions</th>
+            <th>Links</th>
+            <th>User</th>
+            <th>Group</th>
+            <th>Size</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-rw-r--r--</td>
+            <td>1</td>
+            <td>root</td>
+            <td>root</td>
+            <td>0</td>
+            <td>Oct 9</td>
+            <td>14:17</td>
+            <td>authorized_keys</td>
+        </tr>
+        <tr>
+            <td>-rw-r--r--</td>
+            <td>1</td>
+            <td>root</td>
+            <td>root</td>
+            <td>0</td>
+            <td>Oct 15</td>
+            <td>17:58</td>
+            <td>liste</td>
+        </tr>
+        <tr>
+            <td>-rw-------</td>
+            <td>1</td>
+            <td>root</td>
+            <td>root</td>
+            <td>2590</td>
+            <td>Oct 2</td>
+            <td>12:33</td>
+            <td>ok</td>
+        </tr>
+        <tr>
+            <td>-rw-r--r--</td>
+            <td>1</td>
+            <td>root</td>
+            <td>root</td>
+            <td>563</td>
+            <td>Oct 2</td>
+            <td>12:33</td>
+            <td>ok.pub</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
 $ ls -l | tee liste | wc -l :
 
 Explication : Liste détaillée des fichiers (ls -l), passe cette liste à tee qui l’écrit dans le fichier liste et la passe ensuite à wc -l qui compte le nombre de lignes, affichant ainsi le nombre total d’éléments listés.
+Résultat: 5
+
 4. Journal système rsyslog
 Objectif : Comprendre le fonctionnement du service rsyslog et ses configurations.
 
