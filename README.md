@@ -1010,17 +1010,40 @@ Objectif : Comprendre le fonctionnement du service rsyslog et ses configurations
 
 Vérifier si le service rsyslog est lancé et obtenir son PID :
 
-bash
-Copier le code
-systemctl status rsyslog
-Si actif, vous verrez une ligne indiquant "active (running)".
-
-Obtenir le PID :
-
-bash
-Copier le code
-pidof rsyslogd
-Cela affichera le PID du démon rsyslog.
+ps aux | grep rsyslog
+<table border="1">
+    <thead>
+        <tr>
+            <th>USER</th>
+            <th>PID</th>
+            <th>%CPU</th>
+            <th>%MEM</th>
+            <th>VSZ</th>
+            <th>RSS</th>
+            <th>TTY</th>
+            <th>STAT</th>
+            <th>START</th>
+            <th>TIME</th>
+            <th>COMMAND</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>root</td>
+            <td>576</td>
+            <td>0.0</td>
+            <td>0.1</td>
+            <td>8248</td>
+            <td>2120</td>
+            <td>pts/0</td>
+            <td>S+</td>
+            <td>18:29</td>
+            <td>0:00</td>
+            <td>grep rsyslog</td>
+        </tr>
+    </tbody>
+</table>
+le PID de rsyslog est 576
 Fichier de configuration principal et fichiers de destination des messages :
 
 Fichier principal : /etc/rsyslog.conf
@@ -1029,17 +1052,12 @@ Fichiers de destination :
 
 Messages issus des services standards : Généralement /var/log/syslog ou /var/log/messages.
 Autres messages : Peuvent être dirigés vers des fichiers spécifiques comme /var/log/auth.log, /var/log/kern.log, etc.
-Vérification du contenu :
 
-bash
-Copier le code
-cat /var/log/syslog
-cat /var/log/messages
 À quoi sert le service cron ?
 
 Réponse : cron est un service qui permet de planifier l’exécution automatique de tâches (scripts, commandes) à des intervalles réguliers (minute, heure, jour, semaine, mois).
-Que fait la commande tail -f ?
 
+Que fait la commande tail -f ?
 Description : tail -f affiche les dernières lignes d’un fichier et continue de suivre les nouvelles lignes ajoutées en temps réel.
 
 Commande demandée :
@@ -1054,30 +1072,47 @@ Vous verrez des messages dans le terminal où tail -f est exécuté, indiquant l
 À quoi sert le fichier /etc/logrotate.conf ?
 
 Réponse : Le fichier /etc/logrotate.conf configure la rotation des fichiers de logs, c’est-à-dire la gestion automatique de la taille des fichiers de logs en les archivant, les compressant et les supprimant pour éviter qu’ils ne deviennent trop volumineux.
+
 Examiner la sortie de la commande dmesg :
-
-Commande :
-
-bash
-Copier le code
-dmesg
 Questions :
-
 Quel modèle de processeur Linux détecte-t-il sur votre machine ?
 Recherchez les lignes contenant "CPU" ou "processor".
-bash
-Copier le code
-dmesg | grep -i cpu
+**dmesg | grep -i cpu**
+<table border="1">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Component</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0.217773</td>
+            <td>smpboot</td>
+            <td>CPU0: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz (family: 0x6, model: 0x8c, stepping: 0x1)</td>
+        </tr>
+    </tbody>
+</table>
+
 Quels modèles de cartes réseaux détecte-t-il ?
 Recherchez les lignes contenant "Ethernet" ou le nom du fabricant de la carte réseau.
-bash
-Copier le code
-dmesg | grep -i ethernet
-dmesg | grep -i network
-Exemple :
+**dmesg | grep -i network**
+<table border="1">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Component</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1.421180</td>
+            <td>e1000</td>
+            <td>Intel(R) PRO/1000 Network Driver</td>
+        </tr>
+    </tbody>
+</table>
 
-bash
-Copier le code
-dmesg | grep -i cpu
-dmesg | grep -i ethernet
 
