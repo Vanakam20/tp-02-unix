@@ -258,29 +258,407 @@ processes 809
 
 Partie 2 : Relations de parenté des processus
 Option de ps pour afficher le PPID :
+**ps -eo pid,ppid,cmd**
 
-ps -eo pid,ppid,cmd
+<table border="1">
+  <tr>
+    <th>PID</th>
+    <th>PPID</th>
+    <th>CMD</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>0</td>
+    <td>/sbin/init</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>0</td>
+    <td>[kthreadd]</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>2</td>
+    <td>[rcu_gp]</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>2</td>
+    <td>[rcu_par_gp]</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>2</td>
+    <td>[slub_flushwq]</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>2</td>
+    <td>[netns]</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>2</td>
+    <td>[kworker/0:0H-events_highpri]</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>2</td>
+    <td>[mm_percpu_wq]</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>2</td>
+    <td>[rcu_tasks_kthread]</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>2</td>
+    <td>[rcu_tasks_rude_kthread]</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>2</td>
+    <td>[rcu_tasks_trace_kthread]</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>2</td>
+    <td>[ksoftirqd/0]</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>2</td>
+    <td>[rcu_preempt]</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>2</td>
+    <td>[migration/0]</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>2</td>
+    <td>[cpuhp/0]</td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>2</td>
+    <td>[kdevtmpfs]</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td>2</td>
+    <td>[inet_frag_wq]</td>
+  </tr>
+  <tr>
+    <td>21</td>
+    <td>2</td>
+    <td>[kauditd]</td>
+  </tr>
+  <tr>
+    <td>22</td>
+    <td>2</td>
+    <td>[khungtaskd]</td>
+  </tr>
+  <tr>
+    <td>23</td>
+    <td>2</td>
+    <td>[oom_reaper]</td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td>2</td>
+    <td>[writeback]</td>
+  </tr>
+  <tr>
+    <td>27</td>
+    <td>2</td>
+    <td>[kcompactd0]</td>
+  </tr>
+  <tr>
+    <td>28</td>
+    <td>2</td>
+    <td>[ksmd]</td>
+  </tr>
+  <tr>
+    <td>29</td>
+    <td>2</td>
+    <td>[khugepaged]</td>
+  </tr>
+  <tr>
+    <td>30</td>
+    <td>2</td>
+    <td>[kintegrityd]</td>
+  </tr>
+  <tr>
+    <td>31</td>
+    <td>2</td>
+    <td>[kblockd]</td>
+  </tr>
+  <tr>
+    <td>32</td>
+    <td>2</td>
+    <td>[blkcg_punt_bio]</td>
+  </tr>
+  <tr>
+    <td>33</td>
+    <td>2</td>
+    <td>[tpm_dev_wq]</td>
+  </tr>
+  <tr>
+    <td>34</td>
+    <td>2</td>
+    <td>[edac-poller]</td>
+  </tr>
+  <tr>
+    <td>35</td>
+    <td>2</td>
+    <td>[devfreq_wq]</td>
+  </tr>
+  <tr>
+    <td>36</td>
+    <td>2</td>
+    <td>[kworker/0:1H-kblockd]</td>
+  </tr>
+  <tr>
+    <td>37</td>
+    <td>2</td>
+    <td>[kswapd0]</td>
+  </tr>
+  <tr>
+    <td>43</td>
+    <td>2</td>
+    <td>[kthrotld]</td>
+  </tr>
+  <tr>
+    <td>45</td>
+    <td>2</td>
+    <td>[acpi_thermal_pm]</td>
+  </tr>
+  <tr>
+    <td>47</td>
+    <td>2</td>
+    <td>[mld]</td>
+  </tr>
+  <tr>
+    <td>48</td>
+    <td>2</td>
+    <td>[ipv6_addrconf]</td>
+  </tr>
+  <tr>
+    <td>53</td>
+    <td>2</td>
+    <td>[kstrp]</td>
+  </tr>
+  <tr>
+    <td>58</td>
+    <td>2</td>
+    <td>[zswap-shrink]</td>
+  </tr>
+  <tr>
+    <td>59</td>
+    <td>2</td>
+    <td>[kworker/u3:0]</td>
+  </tr>
+  <tr>
+    <td>123</td>
+    <td>2</td>
+    <td>[ata_sff]</td>
+  </tr>
+  <tr>
+    <td>124</td>
+    <td>2</td>
+    <td>[scsi_eh_0]</td>
+  </tr>
+  <tr>
+    <td>125</td>
+    <td>2</td>
+    <td>[scsi_tmf_0]</td>
+  </tr>
+  <tr>
+    <td>126</td>
+    <td>2</td>
+    <td>[scsi_eh_1]</td>
+  </tr>
+  <tr>
+    <td>127</td>
+    <td>2</td>
+    <td>[scsi_eh_2]</td>
+  </tr>
+  <tr>
+    <td>128</td>
+    <td>2</td>
+    <td>[scsi_tmf_2]</td>
+  </tr>
+  <tr>
+    <td>129</td>
+    <td>2</td>
+    <td>[scsi_tmf_1]</td>
+  </tr>
+  <tr>
+    <td>158</td>
+    <td>2</td>
+    <td>[jbd2/sda1-8]</td>
+  </tr>
+  <tr>
+    <td>159</td>
+    <td>2</td>
+    <td>[ext4-rsv-conver]</td>
+  </tr>
+  <tr>
+    <td>199</td>
+    <td>1</td>
+    <td>/lib/systemd/systemd-journald</td>
+  </tr>
+  <tr>
+    <td>228</td>
+    <td>1</td>
+    <td>/lib/systemd/systemd-udevd</td>
+  </tr>
+  <tr>
+    <td>244</td>
+    <td>1</td>
+    <td>/lib/systemd/systemd-timesyncd</td>
+  </tr>
+  <tr>
+    <td>276</td>
+    <td>2</td>
+    <td>[cryptd]</td>
+  </tr>
+  <tr>
+    <td>297</td>
+    <td>2</td>
+    <td>[irq/18-vmwgfx]</td>
+  </tr>
+  <tr>
+    <td>362</td>
+    <td>1</td>
+    <td>dhclient -4 -v -i -pf /run/dhclient.enp0s3.pid -lf /var/lib/dhcp/dhclient.enp0s3.leases -I -df /var/lib/dhcp</td>
+  </tr>
+  <tr>
+    <td>413</td>
+    <td>1</td>
+    <td>/usr/sbin/cron -f</td>
+  </tr>
+  <tr>
+    <td>414</td>
+    <td>1</td>
+    <td>/usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only</td>
+  </tr>
+  <tr>
+    <td>416</td>
+    <td>1</td>
+    <td>/lib/systemd/systemd-logind</td>
+  </tr>
+  <tr>
+    <td>418</td>
+    <td>1</td>
+    <td>/sbin/wpa_supplicant -u -s -O DIR=/run/wpa_supplicant GROUP=netdev</td>
+  </tr>
+  <tr>
+    <td>422</td>
+    <td>1</td>
+    <td>/bin/login -p --</td>
+  </tr>
+  <tr>
+    <td>435</td>
+    <td>1</td>
+    <td>/lib/systemd/systemd --user</td>
+  </tr>
+  <tr>
+    <td>436</td>
+    <td>435</td>
+    <td>(sd-pam)</td>
+  </tr>
+  <tr>
+    <td>442</td>
+    <td>422</td>
+    <td>-bash</td>
+  </tr>
+  <tr>
+    <td>596</td>
+    <td>2</td>
+    <td>[kworker/0:1-events]</td>
+  </tr>
+  <tr>
+    <td>627</td>
+    <td>1</td>
+    <td>sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups</td>
+  </tr>
+  <tr>
+    <td>646</td>
+    <td>627</td>
+    <td>sshd: root@pts/0</td>
+  </tr>
+  <tr>
+    <td>652</td>
+    <td>646</td>
+    <td>-bash</td>
+  </tr>
+  <tr>
+    <td>746</td>
+    <td>2</td>
+    <td>[kworker/u2:1-flush-8:0]</td>
+  </tr>
+  <tr>
+    <td>825</td>
+    <td>2</td>
+    <td>[kworker/0:0-ata_sff]</td>
+  </tr>
+  <tr>
+    <td>908</td>
+    <td>2</td>
+    <td>[kworker/u2:0-events_unbound]</td>
+  </tr>
+  <tr>
+    <td>974</td>
+    <td>2</td>
+    <td>[kworker/0:2-ata_sff]</td>
+  </tr>
+  <tr>
+    <td>978</td>
+    <td>652</td>
+    <td>ps -eo pid,ppid,cmd</td>
+  </tr>
+</table>
+
 Explication : Affiche le PID, le PPID (Parent PID) et la commande associée à chaque processus.
 Liste ordonnée de tous les processus ancêtres de la commande ps en cours d’exécution :
+**ps -o pid,ppid,comm**
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>PID</th>
+            <th>PPID</th>
+            <th>COMMAND</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>652</td>
+            <td>646</td>
+            <td>bash</td>
+        </tr>
+        <tr>
+            <td>981</td>
+            <td>652</td>
+            <td>ps</td>
+        </tr>
+    </tbody>
+</table>
 
 
-
-bash
-Copier le code
-pstree -s $$
-Explication : pstree -s $$ affiche l’arborescence des processus ancêtres du shell courant.
 Partie 3 : Utilisation de pstree
 Installer pstree si nécessaire :
 
-bash
-Copier le code
 apt update
 apt install psmisc
 pstree fait partie du paquet psmisc.
 Afficher l’arborescence des processus :
 
-bash
-Copier le code
+
 pstree -p
 Explication : Affiche tous les processus sous forme d’arborescence avec les PID.
 Afficher les ancêtres d’un processus spécifique (par exemple, ps) :
@@ -291,33 +669,86 @@ pstree -s $(pgrep ps)
 Partie 4 : Utilisation de top
 Lancer top :
 
-bash
-Copier le code
-top
 Afficher les processus triés par utilisation mémoire décroissante :
 
 Dans top, appuyez sur la touche M (majuscule) pour trier par %MEM.
-Questions :
+<table border="1">
+    <thead>
+        <tr>
+            <th>PID</th>
+            <th>USER</th>
+            <th>PR</th>
+            <th>NI</th>
+            <th>VIRT</th>
+            <th>RES</th>
+            <th>SHR</th>
+            <th>S</th>
+            <th>%CPU</th>
+            <th>%MEM</th>
+            <th>TIME+</th>
+            <th>COMMAND</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>199</td>
+            <td>root</td>
+            <td>20</td>
+            <td>0</td>
+            <td>33452</td>
+            <td>11672</td>
+            <td>10888</td>
+            <td>S</td>
+            <td>0.0</td>
+            <td>0.6</td>
+            <td>0:00.30</td>
+            <td>systemd-journal</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>root</td>
+            <td>20</td>
+            <td>0</td>
+            <td>37472</td>
+            <td>10564</td>
+            <td>8564</td>
+            <td>S</td>
+            <td>0.0</td>
+            <td>0.5</td>
+            <td>0:00.98</td>
+            <td>systemd</td>
+        </tr>
+        <tr>
+            <td>646</td>
+            <td>root</td>
+            <td>20</td>
+            <td>0</td>
+            <td>18008</td>
+            <td>10008</td>
+            <td>8664</td>
+            <td>S</td>
+            <td>0.0</td>
+            <td>0.5</td>
+            <td>0:00.58</td>
+            <td>sshd</td>
+        </tr>
+    </tbody>
+</table>
+
 
 Quel est le processus le plus gourmand sur votre machine ? À quoi correspond-il ?
-
-Réponse : Le processus en haut de la liste après avoir trié par mémoire est le plus gourmand. Par exemple, firefox peut être un processus gourmand en mémoire.
-Commandes interactives dans top :
+"systemd-journal"
 
 Passer l’affichage en couleur : Appuyez sur z.
 Mettre en avant la colonne de tri : Appuyez sur f puis utilisez les flèches pour sélectionner la colonne souhaitée.
 Changer la colonne de tri : Appuyez sur O (lettre O majuscule) puis sélectionnez la colonne.
-Utilisation de htop :
+
 
 Installation de htop :
 
-bash
-Copier le code
 apt install htop
 Lancer htop :
 
-bash
-Copier le code
 htop
 Avantages et inconvénients de htop par rapport à top :
 
@@ -368,36 +799,40 @@ Copier le code
 ./date.sh
 Pendant l’exécution, appuyez sur CTRL+Z pour suspendre le processus.
 Mettre en arrière-plan :
-bash
-Copier le code
 bg
 Lancer le deuxième script et le mettre en arrière-plan :
 
-bash
-Copier le code
 ./date-toto.sh
 Pendant l’exécution, appuyez sur CTRL+Z pour suspendre le processus.
-Mettre en arrière-plan :
-bash
-Copier le code
 bg
 Arrêter les scripts en utilisant jobs, fg et CTRL-C :
 
 Liste des jobs :
 
-bash
-Copier le code
-jobs
 Ramener un job au premier plan et l’arrêter :
 
-bash
-Copier le code
 fg %1
 Puis appuyez sur CTRL-C pour arrêter.
-bash
-Copier le code
 fg %2
 Puis appuyez sur CTRL-C pour arrêter.
+
+root@vbox:~# jobs<br>
+[1]-  Stopped                 sleep 1<br>
+[2]+  Stopped                 sleep 1<br>
+
+
+root@vbox:~# fg %1<br>
+sleep 1
+
+root@vbox:~# jobs<br>
+[2]+  Stopped                 sleep 1<br>
+
+
+root@vbox:~# fg %2<br>
+sleep 1
+
+root@vbox:~# jobs
+
 Arrêter les scripts en utilisant ps et kill :
 
 Trouver les PID des scripts :
@@ -408,16 +843,8 @@ ps aux | grep date.sh
 ps aux | grep date-toto.sh
 Utiliser kill pour arrêter les processus :
 
-bash
-Copier le code
 kill <PID_date.sh>
 kill <PID_date-toto.sh>
-Si les processus ne s’arrêtent pas, utilisez :
-bash
-Copier le code
-kill -9 <PID_date.sh>
-kill -9 <PID_date-toto.sh>
-Explication des scripts :
 
 date.sh : Ce script exécute une boucle infinie qui, toutes les secondes, affiche le mot "date" suivi de l’heure actuelle au format HH:MM
 .
