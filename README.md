@@ -867,7 +867,7 @@ Que font les commandes suivantes :
 
 $ ls | cat :
 
-Explication : Liste les fichiers et dossiers dans le répertoire courant (ls) et passe la liste à cat, qui l’affiche sur le terminal. Cela n’a pas d’effet visible différent de ls seul.
+Explication : Liste les fichiers et dossiers dans le répertoire courant (ls) et passe la liste à cat, qui l’affiche sur le terminal. La seul différent a ls est que la liste est mise en colonne .
 $ ls -l | cat > liste :
 
 Explication : Liste détaillée des fichiers (ls -l), passe cette liste à cat, qui redirige la sortie vers le fichier liste, écrasant son contenu précédent.
