@@ -94,27 +94,32 @@ Modifier la configuration SSH pour désactiver l’authentification par mot de p
 
 Ouvrez le fichier de configuration SSH :
 
-
 nano /etc/ssh/sshd_config
 Modifier les lignes suivantes :
- 
-
 
 PermitRootLogin prohibit-password
 
-
 PasswordAuthentication no
-
 
 PermitRootLogin prohibit-password permet les connexions root uniquement via des clés SSH.
 
 PasswordAuthentication no désactive l’authentification par mot de passe pour tous les utilisateurs.
 
-
 Redémarrer le service SSH pour appliquer les modifications :
+**systemctl restart ssh**
 
+is ont se connect avec la clef publique :
+C:\Users\Auguste-Alain\.ssh>ssh root@ip_serveur -p 2222 -i maclef.pub
+**@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions for 'id_rsa.pub' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "id_rsa.pub": bad permissions**
 
-systemctl restart ssh
+il vaut se connecter avec la clef privé: **ssh root@ip_server -p 2222 -i clefpriver**
+
 Procédure pour sécuriser l’accès SSH :
 
 Utilisation des clés SSH uniquement : Assurez-vous que tous les utilisateurs autorisés ont leurs clés publiques déposées sur le serveur.
@@ -127,28 +132,11 @@ Description : Les attaques par brute-force SSH consistent à essayer de multiple
 Risques : Si des mots de passe faibles sont utilisés, un attaquant peut réussir à se connecter et compromettre le système.
 Techniques supplémentaires pour se protéger :
 
-Utiliser Fail2ban :
-
-Installation :
-bash
-Copier le code
-apt install fail2ban
-Activation :
-bash
-Copier le code
-systemctl enable fail2ban
-systemctl start fail2ban
-Fonctionnement : Bloque automatiquement les adresses IP après un certain nombre d’échecs de connexion.
 Changer le port SSH par défaut :
 
-Modification :
-plaintext
-Copier le code
 Port 2222
 Ajoutez ou modifiez cette ligne dans /etc/ssh/sshd_config.
 Redémarrage SSH :
-bash
-Copier le code
 systemctl restart ssh
 Connexion via le nouveau port :
 bash
@@ -156,30 +144,20 @@ Copier le code
 ssh -p 2222 root@ip_serveur
 Limiter les utilisateurs pouvant se connecter via SSH :
 
-Ajouter dans /etc/ssh/sshd_config :
-plaintext
-Copier le code
-AllowUsers user1 user2
-Redémarrer SSH :
-bash
-Copier le code
-systemctl restart ssh
 Utiliser des clés SSH avec une passphrase :
 
 Avantage : Ajoute une couche de sécurité supplémentaire en chiffrant la clé privée.
 Inconvénient : Nécessite de saisir la passphrase lors de chaque connexion, sauf si vous utilisez un agent SSH (ssh-agent).
+
 2. Étude des processus UNIX
 2.1 Exercice : Étude des processus UNIX
-Objectif : Afficher et analyser les processus en cours sur la machine.
 
 Étapes à suivre :
 
 Partie 1 : Afficher les processus avec ps
 Afficher la liste de tous les processus :
 
-bash
-Copier le code
-ps aux
+
 Description des colonnes :
 USER : Nom de l’utilisateur propriétaire du processus.
 PID : Numéro d’identification du processus.
@@ -196,42 +174,96 @@ Questions :
 Réponse : TIME indique le temps total de CPU utilisé par le processus depuis son lancement.
 Quel est le processus ayant le plus utilisé le processeur sur votre machine ?
 
-Réponse : Regardez la colonne %CPU et identifiez le processus avec la valeur la plus élevée. Par exemple, si vous voyez un processus firefox avec %CPU de 30%, c’est probablement le plus gourmand.
-Quel a été le premier processus lancé après le démarrage du système ?
+le plus de CPU:
+<table border="1">
+  <tr>
+    <th>USER</th>
+    <th>PID</th>
+    <th>%CPU</th>
+    <th>%MEM</th>
+    <th>STAT</th>
+    <th>STARTED</th>
+    <th>TIME</th>
+    <th>COMMAND</th>
+  </tr>
+  <tr>
+    <td>root</td>
+    <td>596</td>
+    <td>0.1</td>
+    <td>0.0</td>
+    <td>I</td>
+    <td>12:25:09</td>
+    <td>00:00:04</td>
+    <td>kworker/0:1-events_power_efficient</td>
+  </tr>
+</table>
 
-Réponse : Utilisez la commande suivante pour trier les processus par date de début :
-bash
-Copier le code
-ps -e --sort=start_time | head -n 2
-Le premier processus est généralement init ou systemd.
-À quelle heure votre machine a-t-elle démarré ? Trouvez une autre commande pour le temps depuis lequel le serveur tourne :
+Quel a été le premier processus lancé après le démarrage du système ?
+<table border="1">
+  <tr>
+    <th>PID</th>
+    <th>TTY</th>
+    <th>TIME</th>
+    <th>CMD</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>?</td>
+    <td>00:00:00</td>
+    <td>systemd</td>
+  </tr>
+</table>
 
 Commande pour l'heure de démarrage :
-bash
-Copier le code
-who -b
-Autre commande pour le temps de fonctionnement :
-bash
-Copier le code
-uptime
-ou
-bash
-Copier le code
-uptime -s
-Nombre approximatif de processus créés depuis le démarrage :
 
-Réponse : Il est difficile de déterminer le nombre exact de processus créés depuis le démarrage. Cependant, pour obtenir le nombre actuel de processus :
-bash
-Copier le code
-ps -e | wc -l
+**who -b**
+         <table border="1">
+  <tr>
+    <th>Event</th>
+    <th>Date</th>
+    <th>Time</th>
+  </tr>
+  <tr>
+    <td>System Boot</td>
+    <td>2024-10-15</td>
+    <td>10:23</td>
+  </tr>
+</table>
+
+
+**uptime**
+<table border="1">
+  <tr>
+    <th>Time</th>
+    <th>Uptime</th>
+    <th>Users</th>
+    <th>Load Average (1 min)</th>
+    <th>Load Average (5 min)</th>
+    <th>Load Average (15 min)</th>
+  </tr>
+  <tr>
+    <td>13:10:06</td>
+    <td>1:03</td>
+    <td>2 users</td>
+    <td>0.00</td>
+    <td>0.00</td>
+    <td>0.00</td>
+  </tr>
+</table>
+
+
+Nombre approximatif de processus créés depuis le démarrage :
+**cat /proc/stat | grep processes**
+processes 809
+
 Partie 2 : Relations de parenté des processus
 Option de ps pour afficher le PPID :
 
-bash
-Copier le code
 ps -eo pid,ppid,cmd
 Explication : Affiche le PID, le PPID (Parent PID) et la commande associée à chaque processus.
 Liste ordonnée de tous les processus ancêtres de la commande ps en cours d’exécution :
+
+
 
 bash
 Copier le code
