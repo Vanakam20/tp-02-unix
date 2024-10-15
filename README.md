@@ -839,12 +839,16 @@ Trouver les PID des scripts :
 
 bash
 Copier le code
-ps aux | grep date.sh
-ps aux | grep date-toto.sh
+ps all | grep date.sh
+0     0   657   548  20   0   8248  2132 pipe_r S+   pts/0      0:00 grep date.sh
+ps all | grep date-toto.sh
+0     0   675   548  20   0   8248  2148 pipe_r S+   pts/0      0:00 grep date-toto.sh
 Utiliser kill pour arrêter les processus :
 
 kill <PID_date.sh>
+**kill 657**
 kill <PID_date-toto.sh>
+**kill 675**
 
 date.sh : Ce script exécute une boucle infinie qui, toutes les secondes, affiche le mot "date" suivi de l’heure actuelle au format HH:MM
 .
